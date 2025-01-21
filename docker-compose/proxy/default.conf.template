@@ -7,7 +7,7 @@ map $http_upgrade $connection_upgrade {
 server {
     listen       80;
     listen       443 ssl;
-    server_name  evm-devnet.nexscan.io;
+    server_name  evm-testnet.nexscan.io;
     proxy_http_version 1.1;
 
     # force https
@@ -15,8 +15,8 @@ server {
       rewrite ^ https://$server_name$request_uri? permanent;
     }
 
-    ssl_certificate /etc/letsencrypt/live/evm-devnet.nexscan.io/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/evm-devnet.nexscan.io/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/evm-testnet.nexscan.io/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/evm-testnet.nexscan.io/privkey.pem;
 
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
@@ -46,10 +46,10 @@ server {
 }
 server {
     listen       8080 ssl;
-    server_name  evm-devnet.nexscan.io;
+    server_name  evm-testnet.nexscan.io;
 
-    ssl_certificate /etc/letsencrypt/live/evm-devnet.nexscan.io/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/evm-devnet.nexscan.io/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/evm-testnet.nexscan.io/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/evm-testnet.nexscan.io/privkey.pem;
 
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
@@ -57,7 +57,7 @@ server {
     proxy_http_version 1.1;
     proxy_hide_header Access-Control-Allow-Origin;
     proxy_hide_header Access-Control-Allow-Methods;
-    add_header 'Access-Control-Allow-Origin' 'https://evm-devnet.nexscan.io' always;
+    add_header 'Access-Control-Allow-Origin' 'https://evm-testnet.nexscan.io' always;
     add_header 'Access-Control-Allow-Credentials' 'true' always;
     add_header 'Access-Control-Allow-Methods' 'PUT, GET, POST, OPTIONS, DELETE, PATCH' always;
 
@@ -75,10 +75,10 @@ server {
 }
 server {
     listen       8081 ssl;
-    server_name  evm-devnet.nexscan.io;
+    server_name  evm-testnet.nexscan.io;
 
-    ssl_certificate /etc/letsencrypt/live/evm-devnet.nexscan.io/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/evm-devnet.nexscan.io/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/evm-testnet.nexscan.io/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/evm-testnet.nexscan.io/privkey.pem;
 
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
@@ -86,7 +86,7 @@ server {
     proxy_http_version 1.1;
     proxy_hide_header Access-Control-Allow-Origin;
     proxy_hide_header Access-Control-Allow-Methods;
-    add_header 'Access-Control-Allow-Origin' 'https://evm-devnet.nexscan.io' always;
+    add_header 'Access-Control-Allow-Origin' 'https://evm-testnet.nexscan.io' always;
     add_header 'Access-Control-Allow-Credentials' 'true' always;
     add_header 'Access-Control-Allow-Methods' 'PUT, GET, POST, OPTIONS, DELETE, PATCH' always;
     add_header 'Access-Control-Allow-Headers' 'DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,x-csrf-token' always;
@@ -106,7 +106,7 @@ server {
         proxy_set_header      Connection $connection_upgrade;
         proxy_cache_bypass    $http_upgrade;
         if ($request_method = 'OPTIONS') {
-            add_header 'Access-Control-Allow-Origin' 'https://evm-devnet.nexscan.io' always;
+            add_header 'Access-Control-Allow-Origin' 'https://evm-testnet.nexscan.io' always;
             add_header 'Access-Control-Allow-Credentials' 'true' always;
             add_header 'Access-Control-Allow-Methods' 'PUT, GET, POST, OPTIONS, DELETE, PATCH' always;
             add_header 'Access-Control-Allow-Headers' 'DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,x-csrf-token' always;
